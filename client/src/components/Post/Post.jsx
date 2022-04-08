@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Post({ post }) {
-	const PF = 'https://react-blog-jjm.herokuapp.com/images/';
-	//http://localhost:5000
+	const PF = process.env.REACT_APP_IMAGE_URL;
 	console.log(post.categories);
 	return (
 		<div className='post'>

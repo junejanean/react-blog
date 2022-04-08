@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useContext, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { axiosInstance } from '../../../config';

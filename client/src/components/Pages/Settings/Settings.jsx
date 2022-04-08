@@ -12,8 +12,7 @@ export default function Settings() {
 	const [success, setSuccess] = useState(false);
 
 	const { user, dispatch } = useContext(Context);
-	const PF = '/images/https://react-blog-jjm.herokuapp.com/images/';
-	//http://localhost:5000
+	const PF = process.env.REACT_APP_IMAGE_URL;
 	const avatar =
 		'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png';
 
