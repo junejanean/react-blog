@@ -5,6 +5,7 @@ import { Context } from '../../../context/Context';
 
 export default function Write() {
 	const [title, setTitle] = useState('');
+	const [categories, setCategory] = useState('');
 	const [desc, setDesc] = useState('');
 	const [file, setFile] = useState(null);
 	const { user } = useContext(Context);
@@ -15,6 +16,7 @@ export default function Write() {
 		const newPost = {
 			username: user.username,
 			title,
+			categories,
 			desc,
 		};
 		if (file) {
@@ -30,6 +32,7 @@ export default function Write() {
 		try {
 			const res = await axiosInstance.post('/posts', newPost);
 			window.location.replace('/post/' + res.data._id);
+			console.log(res);
 		} catch (error) {}
 	};
 
@@ -40,22 +43,32 @@ export default function Write() {
 			</div>
 			<form className='write-form' onSubmit={handleSubmit}>
 				<div className='write-form-group'>
-					<label htmlFor='fileInput'>
-						<i class='write-icon fa-solid fa-plus'></i>
-					</label>
-					<input
-						type='file'
-						id='fileInput'
-						style={{ display: 'none' }}
-						onChange={(e) => setFile(e.target.files[0])}
-					/>
-					<input
-						type='text'
-						placeholder='Title'
-						className='write-input'
-						autofocus={true}
-						onChange={(e) => setTitle(e.target.value)}
-					/>
+					<div className='title-wrapper'>
+						<label htmlFor='fileInput'>
+							<i className='write-icon fa-solid fa-plus'></i>
+							<span>Upload photo</span>
+						</label>
+						<input
+							type='file'
+							id='fileInput'
+							style={{ display: 'none' }}
+							onChange={(e) => setFile(e.target.files[0])}
+						/>
+						<input
+							type='text'
+							placeholder='Title'
+							className='write-input'
+							autoFocus={true}
+							onChange={(e) => setTitle(e.target.value)}
+						/>
+						<input
+							type='text'
+							placeholder='Category'
+							className='category-input'
+							autoFocus={true}
+							onChange={(e) => setCategory(e.target.value)}
+						/>
+					</div>
 				</div>
 				<div className='write-form-group'>
 					<textarea

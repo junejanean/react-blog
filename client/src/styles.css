@@ -58,6 +58,9 @@ ul.top-nav {
   margin: 0;
   padding: 0;
 }
+.topRight ul.top-nav {
+  justify-content: right;
+}
 
 .top-nav-list {
   font-family: 'Source Sans Pro', sans-serif;
@@ -75,8 +78,8 @@ ul.top-nav {
 
 .topRight img {
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   object-fit: cover;
   cursor: pointer;
   float: right;
@@ -242,10 +245,14 @@ h6.post-date {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
+.paginate-container {
+  display: block;
+  width: 100%;
+  float: left;
+}
 .pagination {
-  height: 50px;
   display: flex;
-  flex: 9;
+  height: 50px;
   margin: 20px;
   margin-left: 10px;
   flex-direction: row;
@@ -316,7 +323,11 @@ h6.post-date {
   display: flex;
   justify-content: space-between;
   font-size: 16px;
+  color: #666;
+}
+.single-post-info a, .sidebar-list a {
   color: #5B91A6;
+  font-weight: 600;
 }
 .single-post-desc {
   font-family: 'IBM Plex Serif', serif;
@@ -369,10 +380,12 @@ h6.post-date {
   display: flex;
   align-items: center;
   justify-content: center;
-
+}
+.write-form-group:nth-child(1) {
+  margin-left: 0;
 }
 .write-form input, .write-form textarea {
-  background-color: #f7f6f2;
+  background-color: white;
 }
 .write-icon {
   width: 25px;
@@ -385,23 +398,50 @@ h6.post-date {
   align-items: center;
   justify-content: center;
 }
+.write span {
+  font-size: 10px;
+  width: 50px;
+  display: block;
+  text-align: center;
+  margin: 5px 0 0;
+  color: #999;
+}
+.write .title-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.write .title-wrapper label {
+  display: flex;
+  margin-left: -49px;
+}
 .write-input {
   font-size: 30px;
   border: none;
   padding: 20px 20px 20px 10px;
   width: 70vw;
+  color: #666;
 }
-.write-input:focus {
+.category-input {
+  font-size: 20px;
+  border: none;
+  padding: 20px 20px 20px 10px;
+  width: 70vw;
+  margin: 10px 0 10px 27px;
+  color: #666;
+}
+.write-input:focus, .category-input:focus  {
   outline: none;
 }
 .write-text {
   font-size: 20px;
   height: 100vh;
-
+  color: #666;
 }
 .write-submit {
   position: absolute;
-  top: 25px;
+  top: 0;
   right: 50px;
   color: white;
   background-color: #729CA6;
@@ -423,6 +463,13 @@ h6.post-date {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.settings .upload span {
+  font-size: 10px;
+  width: 50px;
+  display: block;
+  text-align: center;
+  margin: 5px 0 0;
 }
 .settings-update-title {
   font-size: 30px;
@@ -477,16 +524,35 @@ h6.post-date {
   height: 30px;
   border: none;
 }
+.btns-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .settings-submit {
   width: 150px;
-  align-self: center;
+  align-self: flex-end;
   border: none;
   border-radius: 10px;
   color: white;
   background-color: #5B91A6;
   padding: 10px;
   margin-top: 20px;
+  cursor: pointer;
+}
+.settings .cancel {
+  width: auto;
+  align-self: flex-start;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: #ceccc8;
+  padding: 10px;
+  margin: 20px 20px 0 0;
   cursor: pointer;
 }
 .settings p.success {
@@ -518,6 +584,8 @@ h6.post-date {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  width: 238px;
+
 }
 .login-form > label, .register-form > label {
   margin: 10px 0;
@@ -586,5 +654,29 @@ h6.post-date {
 .error {
   color: maroon;
   background-color: #f7f6f2;
+}
+.invalid, .valid {
+  color: #f7f6f2;
+  font-size: 14px;
+}
+.settings .invalid, .settings .valid {
+  color: #444;
+}
+.invalid span, .valid span {
+  opacity: .5;
+}
+.eAyRRL > span {
+  opacity: 1;
+}
+.invalid svg path {
+  fill: rgb(172, 22, 52);
+  opacity: .8;
+}
+input:disabled {
+  cursor: default;
+  background-color: rgba(239, 239, 239, 0.5);
+}
+input:focus, button:focus {
+outline-color: #86c4dd;
 }
 

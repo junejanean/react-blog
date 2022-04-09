@@ -3,6 +3,8 @@ import { useContext, useState } from 'react';
 import axios from 'axios';
 import { Context } from '../../../context/Context';
 import { axiosInstance } from '../../../config';
+import { Link } from 'react-router-dom';
+import PasswordChecklist from 'react-password-checklist';
 
 export default function Settings() {
 	const [file, setFile] = useState(null);
@@ -10,6 +12,9 @@ export default function Settings() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [success, setSuccess] = useState(false);
+	const [passwordAgain, setPasswordAgain] = useState('');
+	const [show, setShow] = useState(false);
+	const [isDisabled, setIsDisabled] = useState(true);
 
 	const { user, dispatch } = useContext(Context);
 	const PF = process.env.REACT_APP_IMAGE_URL;
@@ -45,6 +50,10 @@ export default function Settings() {
 		}
 	};
 
+	const handleClick = () => {
+		setIsDisabled(!isDisabled);
+	};
+
 	return (
 		<div className='settings'>
 			<div className='settings-wrapper'>
@@ -55,13 +64,10 @@ export default function Settings() {
 				<form className='settings-form' onSubmit={handleSubmit}>
 					<label>Profile Picture</label>
 					<div className='settings-pp'>
-						<img
-							src={file ? URL.createObjectURL(file) : PF + user.profilePic}
-							//src={user.profilePic ? PF + user.profilePic : avatar}
-							alt=''
-						/>
-						<label htmlFor='fileInput'>
+						<img src={user.profilePic ? PF + user.profilePic : avatar} alt='' />
+						<label htmlFor='fileInput' class='upload'>
 							<i className='settings-pp-icon fa-solid fa-user'></i>
+							<span>Upload photo</span>
 						</label>
 						<input
 							type='file'
@@ -85,11 +91,38 @@ export default function Settings() {
 					<label>Password</label>
 					<input
 						type='password'
+						placeholder='Update password...'
 						onChange={(e) => setPassword(e.target.value)}
+						onClick={() => {
+							setShow(true);
+							handleClick();
+						}}
+						onFocus={() => setShow(true)}
 					/>
-					<button type='submit' className='settings-submit'>
-						Update
-					</button>
+					<input
+						type='password'
+						placeholder='Retype password...'
+						onChange={(e) => setPasswordAgain(e.target.value)}
+						disabled={isDisabled}
+					></input>
+					{show && (
+						<PasswordChecklist
+							rules={['minLength', 'specialChar', 'number', 'capital', 'match']}
+							minLength={4}
+							value={password}
+							valueAgain={passwordAgain}
+							onChange={(isValid) => {}}
+						/>
+					)}
+					<div className='btns-container'>
+						<button className='cancel'>
+							<Link to='/'>Cancel</Link>
+						</button>
+						<button type='submit' className='settings-submit'>
+							Update
+						</button>
+					</div>
+
 					{success && <p className='success'>Profile has been updated!</p>}
 				</form>
 			</div>

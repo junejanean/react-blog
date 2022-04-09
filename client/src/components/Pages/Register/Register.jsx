@@ -1,14 +1,17 @@
 import React from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { axiosInstance } from '../../../config';
+import PasswordChecklist from 'react-password-checklist';
 
 export default function Register() {
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
 	const [error, setError] = useState(false);
+	const [password, setPassword] = useState('');
+	const [passwordAgain, setPasswordAgain] = useState('');
+	const [show, setShow] = useState(false);
+	const [isDisabled, setIsDisabled] = useState(true);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -23,6 +26,10 @@ export default function Register() {
 		} catch (err) {
 			setError(true);
 		}
+	};
+
+	const handleClick = () => {
+		setIsDisabled(!isDisabled);
 	};
 
 	return (
@@ -43,7 +50,28 @@ export default function Register() {
 					type='password'
 					placeholder='Password...'
 					onChange={(e) => setPassword(e.target.value)}
+					onClick={() => {
+						setShow(true);
+						handleClick();
+					}}
+					onFocus={() => setShow(true)}
+					//	onBlur={show ? () => setShow(false) : () => setShow(true)}
 				/>
+				<input
+					type='password'
+					placeholder='Retype password...'
+					onChange={(e) => setPasswordAgain(e.target.value)}
+					disabled={isDisabled}
+				></input>
+				{show && (
+					<PasswordChecklist
+						rules={['minLength', 'specialChar', 'number', 'capital', 'match']}
+						minLength={4}
+						value={password}
+						valueAgain={passwordAgain}
+						onChange={(isValid) => {}}
+					/>
+				)}
 				<button className='register-login'>
 					<Link to='/login'>Login</Link>
 				</button>

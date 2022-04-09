@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../../Header/Header';
 import Posts from '../../Posts/Posts';
 import Sidebar from '../../Sidebar/Sidebar';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Pagination from '../../Pagination/Pagination';
@@ -11,8 +10,6 @@ import { axiosInstance } from '../../../config';
 export default function Home() {
 	const [posts, setPosts] = useState([]);
 	const { search } = useLocation();
-	// const [posts, setPosts] = useState([]);
-	// const [loading, setLoading] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [postsPerPage] = useState(6);
 
@@ -20,7 +17,6 @@ export default function Home() {
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 	// Get current posts
-
 	const indexOfLastPost = currentPage * postsPerPage;
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
 	const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
@@ -39,12 +35,15 @@ export default function Home() {
 			<div className='home'>
 				<div className='posts'>
 					<Posts posts={currentPosts} />
-					<Pagination
-						postsPerPage={postsPerPage}
-						totalPosts={posts.length}
-						paginate={paginate}
-					/>
+					<div className='paginate-container'>
+						<Pagination
+							postsPerPage={postsPerPage}
+							totalPosts={posts.length}
+							paginate={paginate}
+						/>
+					</div>
 				</div>
+
 				<Sidebar />
 			</div>
 		</>

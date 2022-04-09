@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Context } from '../../context/Context';
 import { axiosInstance } from '../../config';
-//import { Link } from 'react-router-dom';
 
 export default function SinglePost() {
 	const location = useLocation();
@@ -12,20 +11,16 @@ export default function SinglePost() {
 	const PF = 'http://localhost:5000/images/';
 	const { user } = useContext(Context);
 	const [title, setTitle] = useState('');
+	const [categories, setCategory] = useState('');
 	const [desc, setDesc] = useState('');
 	const [updateMode, setUpdateMode] = useState(false);
-	const dateFormat = {
-		weekday: 'long',
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	};
 
 	useEffect(() => {
 		const getPost = async () => {
 			const res = await axiosInstance.get('/posts/' + path);
 			setPost(res.data);
 			setTitle(res.data.title);
+			setCategory(res.data.categories);
 			setDesc(res.data.desc);
 		};
 		getPost();
@@ -45,6 +40,7 @@ export default function SinglePost() {
 			await axios.put(`/posts/${post._id}`, {
 				username: user.username,
 				title,
+				categories,
 				desc,
 			});
 			setUpdateMode(false);
@@ -86,10 +82,9 @@ export default function SinglePost() {
 				<div className='single-post-info'>
 					<p className='single-post-author'>
 						Author:
-						<Link to={`/?user=${post.username}`}>
-							<b>{post.username}</b>
-						</Link>
+						<Link to={`/?user=${post.username}`}> {post.username}</Link>
 					</p>
+					<p className='single-post-category'>Category: {post.categories}</p>
 					<p className='single-post-date'>
 						{new Date(post.createdAt).toDateString()}
 					</p>
