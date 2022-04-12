@@ -19,6 +19,7 @@ export default function Write() {
 			categories,
 			desc,
 		};
+		// const endpoints = ['/posts', '/categories'];
 		if (file) {
 			const data = new FormData();
 			const filename = Date.now() + file.name;
@@ -35,6 +36,14 @@ export default function Write() {
 			console.log(res);
 		} catch (error) {}
 	};
+	// trying make 2 different posts (posts & categories)
+	// try {
+	// 	const res = await Promise.all(
+	// 		endpoints.map((endpoint) => axiosInstance.post(endpoint, newPost))
+	// 	);
+	// 	window.location.replace('/post/' + res.data._id);
+	// 	console.log(res);
+	// } catch (error) {}
 
 	return (
 		<div className='write'>
