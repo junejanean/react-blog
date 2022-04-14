@@ -3,10 +3,20 @@ const Category = require('../models/Category');
 
 // CREATE NEW CATEGORY
 router.post('/', async (req, res) => {
-	const newCat = new Category(req.body);
+	let newCat = new Category(req.body);
+	newCat.name = newCat.name.toLowerCase();
 	try {
-		const savedCat = await newCat.save();
-		res.status(200).json(savedCat);
+		const getCats = await Category.find();
+		const filterCats = getCats.filter(
+			(g) => g.name.toLowerCase() === newCat.name.toLowerCase()
+		);
+
+		if (!filterCats.length) {
+			const savedCat = await newCat.save();
+			res.status(200).json(savedCat);
+		} else {
+			res.status(200).json({ msg: 'category exists!' });
+		}
 	} catch (err) {
 		res.status(500).json(err);
 	}

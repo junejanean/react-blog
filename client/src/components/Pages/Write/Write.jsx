@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useContext, useState } from 'react';
 import { axiosInstance } from '../../../config';
 import { Context } from '../../../context/Context';
@@ -12,38 +11,42 @@ export default function Write() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		axios.post('/posts');
-		const newPost = {
-			username: user.username,
-			title,
-			categories,
-			desc,
-		};
-		// const endpoints = ['/posts', '/categories'];
+		const payload = [
+			{
+				endpoint: '/posts',
+				data: {
+					username: user.username,
+					title,
+					categories,
+					desc,
+					photo: file !== null && Date.now() + file.name,
+				},
+			},
+			{
+				endpoint: '/categories',
+				data: {
+					name: categories,
+				},
+			},
+		];
 		if (file) {
 			const data = new FormData();
 			const filename = Date.now() + file.name;
 			data.append('name', filename);
 			data.append('file', file);
-			newPost.photo = filename;
 			try {
-				await axios.post('/upload', data);
+				await axiosInstance.post('/upload', data);
 			} catch (err) {}
 		}
 		try {
-			const res = await axiosInstance.post('/posts', newPost);
-			window.location.replace('/post/' + res.data._id);
+			//  making two different posts (posts & categories)
+			const res = await Promise.all(
+				payload.map((d) => axiosInstance.post(d.endpoint, d.data))
+			);
 			console.log(res);
+			window.location.replace('/post/' + res[0].data._id);
 		} catch (error) {}
 	};
-	// trying make 2 different posts (posts & categories)
-	// try {
-	// 	const res = await Promise.all(
-	// 		endpoints.map((endpoint) => axiosInstance.post(endpoint, newPost))
-	// 	);
-	// 	window.location.replace('/post/' + res.data._id);
-	// 	console.log(res);
-	// } catch (error) {}
 
 	return (
 		<div className='write'>
