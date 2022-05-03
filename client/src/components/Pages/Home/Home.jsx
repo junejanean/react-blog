@@ -23,14 +23,14 @@ export default function Home() {
 	const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 	console.log(currentPosts);
 
-	// const fetchPosts = async () => {
-	// 	const res = await axiosInstance.get('/posts' + search);
-	// 	setPosts(res.data);
-	// };
+	const fetchPosts = async () => {
+		const res = await axiosInstance.get('/posts' + search);
+		setPosts(res.data);
+	};
 
-	// useEffect(() => {
-	// 	fetchPosts();
-	// }, [search, fetchPosts]);
+	useEffect(() => {
+		fetchPosts();
+	}, [search, fetchPosts]);
 
 	return (
 		<>
