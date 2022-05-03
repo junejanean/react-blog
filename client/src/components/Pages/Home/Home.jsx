@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Pagination from '../../Pagination/Pagination';
 import { axiosInstance } from '../../../config';
+import './Home.css';
 
 export default function Home() {
 	const [posts, setPosts] = useState([]);
@@ -22,19 +23,25 @@ export default function Home() {
 	const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 	console.log(currentPosts);
 
-	useEffect(() => {
-		const fetchPosts = async () => {
-			const res = await axiosInstance.get('/posts' + search);
-			setPosts(res.data);
-		};
-		fetchPosts();
-	}, [search]);
+	// const fetchPosts = async () => {
+	// 	const res = await axiosInstance.get('/posts' + search);
+	// 	setPosts(res.data);
+	// };
+
+	// useEffect(() => {
+	// 	fetchPosts();
+	// }, [search, fetchPosts]);
+
 	return (
 		<>
 			<Header />
 			<div className='home'>
 				<div className='posts'>
-					<Posts posts={currentPosts} />
+					{posts.length !== 0 ? (
+						<Posts posts={currentPosts} />
+					) : (
+						<p className='error'>These posts can't load right now.</p>
+					)}
 					<div className='paginate-container'>
 						<Pagination
 							postsPerPage={postsPerPage}

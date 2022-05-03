@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { axiosInstance } from '../../../config';
 import { Context } from '../../../context/Context';
+import './Login.css';
 
 export default function Login() {
 	const userRef = useRef();

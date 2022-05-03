@@ -5,6 +5,7 @@ import { Context } from '../../../context/Context';
 import { axiosInstance } from '../../../config';
 import { Link } from 'react-router-dom';
 import PasswordChecklist from 'react-password-checklist';
+import './Settings.css';
 
 export default function Settings() {
 	const [file, setFile] = useState(null);
@@ -23,7 +24,6 @@ export default function Settings() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(user.password);
 		dispatch({ type: 'UPDATE_START' });
 		const updatedUser = {
 			userId: user._id,

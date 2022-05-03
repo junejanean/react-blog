@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Post.css';
 
 export default function Post({ post }) {
 	const PF = process.env.REACT_APP_IMAGE_URL;

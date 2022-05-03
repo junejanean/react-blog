@@ -1,0 +1,91 @@
+.write {margin-top: 50px;}
+.write-img {
+  margin-left: 125px;
+}
+.write-img img {
+  margin-left:20px;
+  width: 70vw;
+  height: 400px;
+  object-fit: scale-down;
+}
+
+.write-form {
+  position: relative;
+}
+.write-form-group {
+  margin-left: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.write-form-group:nth-child(1) {
+  margin-left: 0;
+}
+.write-form input, .write-form textarea {
+  background-color: white;
+}
+.write-icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid;
+  cursor: pointer;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.write span {
+  font-size: 10px;
+  width: 50px;
+  display: block;
+  text-align: center;
+  margin: 5px 0 0;
+  color: #999;
+}
+.write .title-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.write .title-wrapper label {
+  display: flex;
+  margin-left: -49px;
+}
+.write-input {
+  font-size: 30px;
+  border: none;
+  padding: 20px 20px 20px 10px;
+  width: 70vw;
+  color: #666;
+}
+.write-input:focus, .category-input:focus  {
+  outline: none;
+}
+.write-text {
+  font-size: 20px;
+  height: 100vh;
+  color: #666;
+}
+.write-submit {
+  position: absolute;
+  top: 0;
+  right: 50px;
+  color: white;
+  background-color: #729CA6;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border: none
+
+}
+.category-input {
+  font-size: 20px;
+  border: none;
+  padding: 20px 20px 20px 10px;
+  width: 70vw;
+  margin: 10px 0 10px 27px;
+  color: #666;
+}

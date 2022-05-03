@@ -1,0 +1,63 @@
+.login, .register {
+  display: flex;
+  height: calc(100vh - 50px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("https://images.pexels.com/photos/2157168/pexels-photo-2157168.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+  background-size: cover;
+  background: linear-gradint(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5),
+    );
+}
+
+.login-title, .register-title {
+  font-size: 50px;
+  color: #222;
+  font-family: 'IBM Plex Serif', serif;
+}
+.login-form, .register-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 238px;
+
+}
+.login-form > label, .register-form > label {
+  margin: 10px 0;
+}
+.login-form > input, .register-form > input {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  color: #999;
+}
+.login-form > input::placeholder {color: #999;}
+.login-button {
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: lightcoral;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+.login-button:disabled {
+  cursor: not-allowed;
+  border-color: rgb(240, 174, 174) ;
+}
+.login-register {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  cursor: pointer;
+  background-color: #5B91A6;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 11px;
+}

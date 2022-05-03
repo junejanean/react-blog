@@ -1,0 +1,80 @@
+.posts {
+  flex: 9;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 20px;
+  order: 1;
+}
+.post {
+  width: 385px;
+  margin: 0 25px 40px 0;
+  display: flex;
+  flex-direction: column;
+}
+.post img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+.post-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.post-cats {
+  display: flex;
+  flex-direction: row;
+}
+.post-cat {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  color: #5B91A6;
+  line-height: 20px;
+  margin: 5px 10px 0 0;
+  cursor: pointer;
+}
+.post-title {
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin: 10px 0 10px 0;
+  cursor: pointer;
+  text-align: center;
+}
+h6.post-date {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: italic;
+  font-size: 13px;
+  color: #999;
+  margin: 5px 0 5px 0;
+}
+.post-desc {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  color: #444;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+h6.post-date {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: italic;
+  font-size: 13px;
+  color: #999;
+  margin: 5px 0 5px 0;
+}
+.post-desc {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  color: #444;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}

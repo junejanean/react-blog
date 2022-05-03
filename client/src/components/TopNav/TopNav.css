@@ -1,0 +1,67 @@
+.stickyNav {
+  background-color: #f7f6f2;
+  color: #444;
+  font-family:'IBM Plex Serif', serif;
+  position: sticky;
+  top:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 5px 0 5px;
+  
+}
+.topLeft {
+  flex:3;
+  font-size: 1em;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 20px;
+}
+.topMid {
+  flex:5;
+  justify-content: center;
+  align-items: center;
+}
+.topRight {
+  flex: 3;
+  align-items: center;
+  justify-content: center;
+}
+ul.top-nav {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.topRight ul.top-nav {
+  justify-content: right;
+}
+
+.top-nav-list {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: .9em;
+  font-weight: 200;
+  margin: 0;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.search {
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.topRight img {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+  cursor: pointer;
+  float: right;
+  margin: 0 30px 0 0;
+}
+.topLeft i {
+  padding: 5px;
+}

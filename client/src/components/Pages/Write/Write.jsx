@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { axiosInstance } from '../../../config';
 import { Context } from '../../../context/Context';
+import './Write.css';
 
 export default function Write() {
 	const [title, setTitle] = useState('');

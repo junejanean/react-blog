@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { axiosInstance } from '../../../config';
 import PasswordChecklist from 'react-password-checklist';
+import './Register.css';
 
 export default function Register() {
 	const [username, setUsername] = useState('');
